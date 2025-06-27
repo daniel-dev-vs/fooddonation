@@ -1,12 +1,16 @@
 package org.foodbank.fooddonation.infrastructure.persistence;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 import javax.annotation.processing.Generated;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table("PACKET")
 public class Packet {
@@ -18,6 +22,9 @@ public class Packet {
     private String donor;
     private String type;
     private LocalDateTime create_at;
+
+    @OneToMany(mappedBy = "packet", cascade = CascadeType.ALL)
+    private List<Product> products = new ArrayList<>();
 
 
     public Packet(Long id, String volunteer, String donor, String type, LocalDateTime create_at) {
@@ -66,5 +73,13 @@ public class Packet {
 
     public void setCreate_at(LocalDateTime create_at) {
         this.create_at = create_at;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
