@@ -1,3 +1,0 @@
-2025-06-27 00:03:31.937996-03:00 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS `packet` ( id bigint AUTO_INCREMENT primary key, volunteer varchar(255) not null, donor varchar(255) not null, type varchar(255) [*]not created_at timestamp )"; expected "ARRAY, INVISIBLE, VISIBLE, NOT NULL, DEFAULT, GENERATED, ON UPDATE, NOT NULL, DEFAULT ON NULL, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, COMMENT, PRIMARY KEY, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
-CREATE TABLE IF NOT EXISTS `packet` ( id bigint AUTO_INCREMENT primary key, volunteer varchar(255) not null, donor varchar(255) not null, type varchar(255) not created_at timestamp ) [42001-232]

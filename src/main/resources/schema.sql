@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `packet` (
   id bigint AUTO_INCREMENT primary key,
   volunteer varchar(255) not null,
   donor varchar(255) not null,
-  type varchar(255) not
+  type varchar(255) not null,
   created_at timestamp
 );
 
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   id bigint AUTO_INCREMENT primary key,
   name varchar(255) not null,
   unity varchar(255) not null,
-  type varchar(255) not,
+  type_unity varchar(255) not null,
   created_at timestamp,
   FOREIGN KEY (pacote_id) REFERENCES pacote(id)
 );
