@@ -1,10 +1,7 @@
 package org.foodbank.fooddonation.infrastructure.persistence;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToMany;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+
 import org.springframework.data.relational.core.mapping.Table;
 
 import javax.annotation.processing.Generated;
@@ -12,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 @Table("PACKET")
 public class Packet {
 

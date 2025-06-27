@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS `product` (
   unity varchar(255) not null,
   type_unity varchar(255) not null,
   created_at timestamp,
-  FOREIGN KEY (pacote_id) REFERENCES pacote(id)
+  packet_id bigint not null,
+  FOREIGN KEY (packet_id) REFERENCES packet(id)
 );
 
 CREATE TABLE IF NOT EXISTS `stock` (

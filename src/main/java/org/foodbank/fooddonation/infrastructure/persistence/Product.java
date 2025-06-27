@@ -1,15 +1,13 @@
 package org.foodbank.fooddonation.infrastructure.persistence;
 
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.*;
+
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
+@Entity
 @Table("PRODUCT")
 public class Product {
 
