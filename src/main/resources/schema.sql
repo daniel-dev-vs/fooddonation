@@ -10,7 +10,6 @@ CREATE TABLE IF NOT EXISTS `product` (
   id bigint AUTO_INCREMENT primary key,
   name varchar(255) not null,
   unity varchar(255) not null,
-  type_unity varchar(255) not null,
   created_at timestamp
 );
 
