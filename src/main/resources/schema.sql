@@ -11,9 +11,17 @@ CREATE TABLE IF NOT EXISTS `product` (
   name varchar(255) not null,
   unity varchar(255) not null,
   type_unity varchar(255) not null,
-  created_at timestamp,
+  created_at timestamp
+);
+
+CREATE TABLE IF NOT EXISTS `packet_product` (
   packet_id bigint not null,
-  FOREIGN KEY (packet_id) REFERENCES packet(id)
+  product_id bigint not null,
+  PRIMARY KEY (packet_id, product_id),
+
+  -- Define as chaves estrangeiras que ligam às tabelas principais
+  FOREIGN KEY (packet_id) REFERENCES packet(id),
+  FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
 CREATE TABLE IF NOT EXISTS `stock` (

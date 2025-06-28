@@ -1,16 +1,14 @@
-package org.foodbank.fooddonation.infrastructure.persistence;
+package org.foodbank.fooddonation.frameworksandrivers.persistence;
 
 import jakarta.persistence.*;
 
-import org.springframework.data.relational.core.mapping.Table;
 
-import javax.annotation.processing.Generated;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table("PACKET")
+@Table(name ="PACKET")
 public class Packet {
 
     @Id
@@ -21,8 +19,13 @@ public class Packet {
     private String type;
     private LocalDateTime create_at;
 
-    @OneToMany(mappedBy = "packet", cascade = CascadeType.ALL)
-    private List<Product> products = new ArrayList<>();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "PACKET_PRODUCT",
+            joinColumns = {@JoinColumn(name = "packet_id") },
+            inverseJoinColumns = {@JoinColumn(name = "product_id")}
+    )
+    private Set<Product> products = new HashSet<>();
 
 
     public Packet(Long id, String volunteer, String donor, String type, LocalDateTime create_at) {
@@ -73,11 +76,11 @@ public class Packet {
         this.create_at = create_at;
     }
 
-    public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 }
