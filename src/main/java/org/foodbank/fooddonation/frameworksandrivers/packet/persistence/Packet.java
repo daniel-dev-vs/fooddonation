@@ -1,4 +1,4 @@
-package org.foodbank.fooddonation.frameworksandrivers.packet;
+package org.foodbank.fooddonation.frameworksandrivers.packet.persistence;
 
 import jakarta.persistence.*;
 import org.foodbank.fooddonation.frameworksandrivers.product.persistence.ProductPersistence;

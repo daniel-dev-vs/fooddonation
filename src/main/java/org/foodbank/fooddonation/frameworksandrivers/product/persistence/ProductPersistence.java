@@ -3,7 +3,7 @@ package org.foodbank.fooddonation.frameworksandrivers.product.persistence;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.foodbank.fooddonation.frameworksandrivers.packet.Packet;
+import org.foodbank.fooddonation.frameworksandrivers.packet.persistence.Packet;
 
 
 import java.time.LocalDateTime;
