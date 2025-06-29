@@ -1,7 +1,6 @@
 package org.foodbank.fooddonation.frameworksandrivers.packet.persistence;
 
 import jakarta.persistence.*;
-import org.foodbank.fooddonation.frameworksandrivers.product.persistence.ProductPersistence;
 
 
 import java.time.LocalDateTime;
@@ -10,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Table(name ="PACKET")
-public class Packet {
+public class PacketPersistence {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,16 +19,11 @@ public class Packet {
     private String type;
     private LocalDateTime create_at;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "PACKET_PRODUCT",
-            joinColumns = {@JoinColumn(name = "packet_id") },
-            inverseJoinColumns = {@JoinColumn(name = "product_id")}
-    )
-    private Set<ProductPersistence> products = new HashSet<>();
+    @OneToMany(mappedBy = "packetPersistence", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PacketProductPersistence> packetProductPersistences = new HashSet<>();
 
 
-    public Packet(Long id, String volunteer, String donor, String type, LocalDateTime create_at) {
+    public PacketPersistence(Long id, String volunteer, String donor, String type, LocalDateTime create_at) {
         this.id = id;
         this.volunteer = volunteer;
         this.donor = donor;
@@ -77,11 +71,11 @@ public class Packet {
         this.create_at = create_at;
     }
 
-    public Set<ProductPersistence> getProducts() {
-        return products;
+    public Set<PacketProductPersistence> getProducts() {
+        return packetProductPersistences;
     }
 
-    public void setProducts(Set<ProductPersistence> products) {
-        this.products = products;
+    public void setProducts(Set<PacketProductPersistence> products) {
+        this.packetProductPersistences = products;
     }
 }

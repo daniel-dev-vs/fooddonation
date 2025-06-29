@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 CREATE TABLE IF NOT EXISTS `packet_product` (
   packet_id bigint not null,
   product_id bigint not null,
+  quantity bigint not null,
   PRIMARY KEY (packet_id, product_id),
 
   -- Define as chaves estrangeiras que ligam às tabelas principais

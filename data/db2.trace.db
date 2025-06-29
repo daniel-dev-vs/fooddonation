@@ -332,3 +332,9 @@ org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (
 	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
 	at org.springframework.boot.SpringApplicationShutdownHook.run(SpringApplicationShutdownHook.java:116)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
+2025-06-28 22:21:41.427949-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS `packet_product` ( packet_id bigint not null, product_id bigint not null, quantity bigint not null PRIMARY KEY [*](packet_id, product_id), FOREIGN KEY (packet_id) REFERENCES packet(id), FOREIGN KEY (product_id) REFERENCES product(id) )"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS `packet_product` ( packet_id bigint not null, product_id bigint not null, quantity bigint not null PRIMARY KEY (packet_id, product_id), FOREIGN KEY (packet_id) REFERENCES packet(id), FOREIGN KEY (product_id) REFERENCES product(id) ) [42001-232]
+2025-06-28 22:28:44.328795-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS `packet_product` ( packet_id bigint not null, product_id bigint not null, quantity bigint not null PRIMARY KEY [*](packet_id, product_id), FOREIGN KEY (packet_id) REFERENCES packet(id), FOREIGN KEY (product_id) REFERENCES product(id) )"; expected "HASH, CONSTRAINT, COMMENT, UNIQUE, NOT NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+CREATE TABLE IF NOT EXISTS `packet_product` ( packet_id bigint not null, product_id bigint not null, quantity bigint not null PRIMARY KEY (packet_id, product_id), FOREIGN KEY (packet_id) REFERENCES packet(id), FOREIGN KEY (product_id) REFERENCES product(id) ) [42001-232]

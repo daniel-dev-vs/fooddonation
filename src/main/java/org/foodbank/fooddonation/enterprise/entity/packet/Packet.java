@@ -1,4 +1,4 @@
-package org.foodbank.fooddonation.enterprise.entity;
+package org.foodbank.fooddonation.enterprise.entity.packet;
 
 import org.foodbank.fooddonation.enterprise.entity.product.Product;
 

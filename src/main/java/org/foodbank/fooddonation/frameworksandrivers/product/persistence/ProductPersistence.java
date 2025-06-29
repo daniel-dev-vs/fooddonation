@@ -1,9 +1,8 @@
 package org.foodbank.fooddonation.frameworksandrivers.product.persistence;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.foodbank.fooddonation.frameworksandrivers.packet.persistence.Packet;
+import org.foodbank.fooddonation.frameworksandrivers.packet.persistence.PacketProductPersistence;
 
 
 import java.time.LocalDateTime;
@@ -20,9 +19,8 @@ public class ProductPersistence {
     private String unity;
     private LocalDateTime createdAt;
 
-    @ManyToMany(mappedBy = "products")
-    @JsonIgnore
-    private Set<Packet> packets;
+    @OneToMany(mappedBy = "productPersistence", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PacketProductPersistence> packetProducts;
 
 
     public ProductPersistence() {
@@ -66,11 +64,11 @@ public class ProductPersistence {
         this.createdAt = createdAt;
     }
 
-    public Set<Packet> getPacket() {
-        return packets;
+    public Set<PacketProductPersistence> getPacket() {
+        return packetProducts;
     }
 
-    public void setPacket(Set<Packet> packets) {
-        this.packets = packets;
+    public void setPacket(Set<PacketProductPersistence> packets) {
+        this.packetProducts = packets;
     }
 }
