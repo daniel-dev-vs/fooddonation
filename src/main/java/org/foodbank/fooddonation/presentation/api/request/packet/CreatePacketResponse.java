@@ -1,4 +1,6 @@
 package org.foodbank.fooddonation.presentation.api.request.packet;
 
-public record CreatePacketResponse(Long id, String name) {
+import java.util.Collection;
+
+public record CreatePacketResponse(Long id, String donor, String volunteer, Collection<CreatePacketProductsResponse> products) {
 }

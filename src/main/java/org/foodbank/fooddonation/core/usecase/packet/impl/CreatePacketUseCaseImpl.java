@@ -3,7 +3,7 @@ package org.foodbank.fooddonation.core.usecase.packet.impl;
 import org.foodbank.fooddonation.core.entity.packet.Packet;
 import org.foodbank.fooddonation.core.entity.packet.PacketInvalidException;
 import org.foodbank.fooddonation.core.entity.packet.PacketProduct;
-import org.foodbank.fooddonation.core.gateway.GetPacketGateway;
+import org.foodbank.fooddonation.core.gateway.packet.GetPacketGateway;
 import org.foodbank.fooddonation.core.gateway.packet.CreatePacketGateway;
 import org.foodbank.fooddonation.core.gateway.packet.CreatePacketProductGateway;
 
@@ -56,7 +56,7 @@ public class CreatePacketUseCaseImpl implements CreatePacketUseCase {
                 packetCreated.getDonor(),
                 packetCreated.getVolunteer(),
                 packetCreated.getType(),
-                packetProductList.stream().map(p -> new CreatePacketProductOutput(p.productId(), "teste", p.quantity()))
+                packetProductList.stream().map(p -> new CreatePacketProductOutput(p.productId(),  p.quantity()))
                         .collect(Collectors.toSet())
         );
 

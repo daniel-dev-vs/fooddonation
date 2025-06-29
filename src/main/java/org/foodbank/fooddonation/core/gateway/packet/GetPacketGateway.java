@@ -1,4 +1,4 @@
-package org.foodbank.fooddonation.core.gateway;
+package org.foodbank.fooddonation.core.gateway.packet;
 
 import org.foodbank.fooddonation.core.entity.packet.Packet;
 

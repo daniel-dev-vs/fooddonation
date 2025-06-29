@@ -1,8 +1,11 @@
 package org.foodbank.fooddonation.core.entity.packet;
 
 import org.foodbank.fooddonation.core.entity.product.Product;
+import org.foodbank.fooddonation.infrastructure.packet.persistence.PacketPersistence;
+import org.foodbank.fooddonation.infrastructure.product.persistence.ProductPersistence;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +15,8 @@ public class Packet {
     private String volunteer;
     private String type;
     private LocalDateTime createAt;
-    private Set<Product> products;
+    private Collection<Product> products;
+    private Collection<PacketProduct>  packetProducts;
 
     public Packet(Long id, String donor, String volunteer, String type, LocalDateTime createAt) {
         this.id = id;
@@ -22,13 +26,14 @@ public class Packet {
         this.createAt = createAt;
     }
 
-    public Packet(Long id, String donor, String volunteer, String type, LocalDateTime createAt, Set<Product> products) {
+    public Packet(Long id, String donor, String volunteer, String type, LocalDateTime createAt, Collection<Product> products, Collection<PacketProduct> packetProducts) {
         this.id = id;
         this.donor = donor;
         this.volunteer = volunteer;
         this.type = type;
         this.createAt = createAt;
         this.products = products;
+        this.packetProducts = packetProducts;
     }
 
     public Packet(String donor, String volunteer, String type, LocalDateTime createAt) {
@@ -96,11 +101,20 @@ public class Packet {
         this.createAt = createAt;
     }
 
-    public Set<Product> getProducts() {
+    public Collection<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(Collection<Product> products) {
         this.products = products;
     }
+
+    public Collection<PacketProduct> getPacketProducts() {
+        return packetProducts;
+    }
+
+    public void setPacketProducts(Collection<PacketProduct> packetProducts) {
+        this.packetProducts = packetProducts;
+    }
+
 }
