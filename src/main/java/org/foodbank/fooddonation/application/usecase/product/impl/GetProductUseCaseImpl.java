@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class GetProductUseCaseImpl implements GetProductUseCase {
 
-    private GetGatewayProduct getGatewayProduct;
+    private final GetGatewayProduct getGatewayProduct;
 
     public  GetProductUseCaseImpl(GetGatewayProduct getGatewayProduct){
         this.getGatewayProduct =getGatewayProduct;

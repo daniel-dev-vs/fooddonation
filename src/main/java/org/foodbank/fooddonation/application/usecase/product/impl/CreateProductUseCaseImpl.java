@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 public class CreateProductUseCaseImpl implements CreateProductUseCase {
 
-    private CreateGatewayProduct createGatewayProduct;
+    private final CreateGatewayProduct createGatewayProduct;
 
     public CreateProductUseCaseImpl(CreateGatewayProduct createGatewayProduct){
         this.createGatewayProduct = createGatewayProduct;
