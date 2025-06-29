@@ -1,4 +1,4 @@
-package org.foodbank.fooddonation.frameworksandrivers.api.request;
+package org.foodbank.fooddonation.frameworksandrivers.product.api.request;
 
 import java.time.LocalDateTime;
 

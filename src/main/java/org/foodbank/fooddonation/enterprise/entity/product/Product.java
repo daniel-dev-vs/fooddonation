@@ -7,12 +7,19 @@ public class Product {
     private Long id;
     private String name;
     private String unity;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
-    public Product(String name, String unity, LocalDateTime createAt) {
+    public Product(String name, String unity, LocalDateTime createdAt) {
         this.name = name;
         this.unity = unity;
-        this.createAt = createAt;
+        this.createdAt = createdAt;
+    }
+
+    public Product(Long id,String name, String unity, LocalDateTime createdAt) {
+        this.id = id;
+        this.name = name;
+        this.unity = unity;
+        this.createdAt = createdAt;
     }
 
     public void validateProduct() throws ProductInvalidException {
@@ -32,7 +39,7 @@ public class Product {
             throw new ProductInvalidException("The unity of product is invalid.");
 
         try{
-            UnityWeightVolume.valueOf(this.unity.toLowerCase());
+            UnityWeightVolume.valueOf(this.unity.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new ProductInvalidException("The unity of product just accept ML,L,G,KG and U");
         }
@@ -64,11 +71,11 @@ public class Product {
         this.unity = unity;
     }
 
-    public LocalDateTime getCreateAt() {
-        return createAt;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreateAt(LocalDateTime createAt) {
-        this.createAt = createAt;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

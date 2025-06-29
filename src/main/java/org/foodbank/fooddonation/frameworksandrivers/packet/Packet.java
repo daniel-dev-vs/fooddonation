@@ -1,6 +1,7 @@
-package org.foodbank.fooddonation.frameworksandrivers.persistence;
+package org.foodbank.fooddonation.frameworksandrivers.packet;
 
 import jakarta.persistence.*;
+import org.foodbank.fooddonation.frameworksandrivers.product.persistence.ProductPersistence;
 
 
 import java.time.LocalDateTime;
@@ -25,7 +26,7 @@ public class Packet {
             joinColumns = {@JoinColumn(name = "packet_id") },
             inverseJoinColumns = {@JoinColumn(name = "product_id")}
     )
-    private Set<Product> products = new HashSet<>();
+    private Set<ProductPersistence> products = new HashSet<>();
 
 
     public Packet(Long id, String volunteer, String donor, String type, LocalDateTime create_at) {
@@ -76,11 +77,11 @@ public class Packet {
         this.create_at = create_at;
     }
 
-    public Set<Product> getProducts() {
+    public Set<ProductPersistence> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<Product> products) {
+    public void setProducts(Set<ProductPersistence> products) {
         this.products = products;
     }
 }

@@ -1,4 +1,4 @@
-package org.foodbank.fooddonation.interfaceadapters.controller;
+package org.foodbank.fooddonation.interfaceadapters.product.controller;
 
 import org.foodbank.fooddonation.application.usecase.product.dto.CreateProductInput;
 import org.foodbank.fooddonation.application.usecase.product.dto.CreateProductOuput;

@@ -1,9 +1,9 @@
-package org.foodbank.fooddonation.frameworksandrivers.persistence;
+package org.foodbank.fooddonation.frameworksandrivers.product.persistence;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
+import org.foodbank.fooddonation.frameworksandrivers.packet.Packet;
 
 
 import java.time.LocalDateTime;
@@ -11,19 +11,28 @@ import java.util.Set;
 
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
+public class ProductPersistence {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Long unity;
-    private String typeUnity;
-    private LocalDateTime create_at;
+    private String unity;
+    private LocalDateTime createdAt;
 
     @ManyToMany(mappedBy = "products")
     @JsonIgnore
     private Set<Packet> packets;
+
+
+    public ProductPersistence() {
+    }
+
+    public ProductPersistence(String name, String unity, LocalDateTime createdAt) {
+        this.name = name;
+        this.unity = unity;
+        this.createdAt = createdAt;
+    }
 
     public Long getId() {
         return id;
@@ -41,28 +50,20 @@ public class Product {
         this.name = name;
     }
 
-    public Long getUnity() {
+    public String getUnity() {
         return unity;
     }
 
-    public void setUnity(Long unity) {
+    public void setUnity(String unity) {
         this.unity = unity;
     }
 
-    public String getTypeUnity() {
-        return typeUnity;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setTypeUnity(String typeUnity) {
-        this.typeUnity = typeUnity;
-    }
-
-    public LocalDateTime getCreate_at() {
-        return create_at;
-    }
-
-    public void setCreate_at(LocalDateTime create_at) {
-        this.create_at = create_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
     public Set<Packet> getPacket() {
