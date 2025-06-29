@@ -1,6 +1,0 @@
-package org.foodbank.fooddonation.application.usecase.product.dto;
-
-import java.time.LocalDateTime;
-
-public record GetProductOutput(Long id, String name, String unity, LocalDateTime createAt) {
-}
