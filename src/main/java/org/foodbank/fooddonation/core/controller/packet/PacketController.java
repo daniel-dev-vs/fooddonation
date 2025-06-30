@@ -1,4 +1,4 @@
-package org.foodbank.fooddonation.infrastructure.packet.controller;
+package org.foodbank.fooddonation.core.controller.packet;
 
 import org.foodbank.fooddonation.core.entity.packet.PacketInvalidException;
 import org.foodbank.fooddonation.presentation.api.request.packet.CreatePacketRequest;

@@ -1,5 +1,6 @@
 package org.foodbank.fooddonation.infrastructure.product.controller;
 
+import org.foodbank.fooddonation.core.controller.product.ProductController;
 import org.foodbank.fooddonation.core.entity.product.ProductInvalidException;
 import org.foodbank.fooddonation.core.entity.product.ProductNotFoundException;
 import org.foodbank.fooddonation.core.gateway.product.CreateProductGateway;

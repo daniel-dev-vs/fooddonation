@@ -1,5 +1,6 @@
 package org.foodbank.fooddonation.infrastructure.packet.controller;
 
+import org.foodbank.fooddonation.core.controller.packet.PacketController;
 import org.foodbank.fooddonation.core.entity.packet.PacketInvalidException;
 import org.foodbank.fooddonation.core.gateway.packet.GetPacketGateway;
 import org.foodbank.fooddonation.core.gateway.packet.CreatePacketGateway;

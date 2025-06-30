@@ -1,7 +1,7 @@
 package org.foodbank.fooddonation.presentation.api;
 
 import org.foodbank.fooddonation.core.entity.packet.PacketInvalidException;
-import org.foodbank.fooddonation.infrastructure.packet.controller.PacketController;
+import org.foodbank.fooddonation.core.controller.packet.PacketController;
 import org.foodbank.fooddonation.presentation.api.request.packet.CreatePacketRequest;
 import org.foodbank.fooddonation.presentation.api.request.packet.CreatePacketResponse;
 import org.foodbank.fooddonation.presentation.api.request.packet.GetPacketResponse;

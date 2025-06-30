@@ -2,7 +2,7 @@ package org.foodbank.fooddonation.presentation.api;
 
 
 import org.foodbank.fooddonation.core.entity.product.ProductInvalidException;
-import org.foodbank.fooddonation.infrastructure.product.controller.ProductController;
+import org.foodbank.fooddonation.core.controller.product.ProductController;
 import org.foodbank.fooddonation.presentation.api.request.product.CreateProductRequest;
 import org.foodbank.fooddonation.presentation.api.request.product.CreateProductResponse;
 import org.foodbank.fooddonation.presentation.api.request.product.GetProductResponse;

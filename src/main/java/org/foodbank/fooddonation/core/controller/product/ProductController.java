@@ -1,4 +1,4 @@
-package org.foodbank.fooddonation.infrastructure.product.controller;
+package org.foodbank.fooddonation.core.controller.product;
 
 import org.foodbank.fooddonation.core.entity.product.ProductInvalidException;
 import org.foodbank.fooddonation.core.entity.product.ProductNotFoundException;
