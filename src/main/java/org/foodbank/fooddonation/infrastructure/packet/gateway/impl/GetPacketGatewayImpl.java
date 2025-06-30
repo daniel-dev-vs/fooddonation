@@ -1,6 +1,7 @@
 package org.foodbank.fooddonation.infrastructure.packet.gateway.impl;
 
 import org.foodbank.fooddonation.core.entity.packet.Packet;
+import org.foodbank.fooddonation.core.entity.packet.PacketProduct;
 import org.foodbank.fooddonation.core.entity.product.Product;
 import org.foodbank.fooddonation.core.gateway.packet.GetPacketGateway;
 import org.foodbank.fooddonation.infrastructure.packet.persistence.PacketProductPersistence;
@@ -33,7 +34,7 @@ public class GetPacketGatewayImpl implements GetPacketGateway {
                                 p.getType(),
                                 p.getCreatedAt(),
                                 getProducts(p.getPacketProductPersistences()),
-                                new HashSet<>()))
+                                getPacketProducts(p.getPacketProductPersistences())))
                 .collect(Collectors.toSet());
 
 
@@ -51,6 +52,14 @@ public class GetPacketGatewayImpl implements GetPacketGateway {
                                 pp.getProductPersistence().getCreatedAt()
                         )
                 )
+                .collect(Collectors.toSet());
+
+    }
+
+    private Collection<PacketProduct> getPacketProducts(Collection<PacketProductPersistence> packetProductsPersistence) {
+        return  packetProductsPersistence
+                .stream()
+                .map(pp -> new PacketProduct(pp.getId().getPacketId(),pp.getId().getProductId(), pp.getQuantity()))
                 .collect(Collectors.toSet());
 
     }

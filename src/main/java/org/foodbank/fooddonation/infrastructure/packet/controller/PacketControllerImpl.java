@@ -34,7 +34,7 @@ public class PacketControllerImpl implements PacketController {
                                 CreatePacketGateway createPacketGateway,
                                 ProductExistsGateway productExistsGateway,
                                 CreatePacketProductGateway createPacketProductGateway
-                                ) {
+    ) {
         this.getPacketGateway = getPacketGateway;
         this.createPacketGateway = createPacketGateway;
         this.productExistsGateway = productExistsGateway;
@@ -43,8 +43,7 @@ public class PacketControllerImpl implements PacketController {
         this.createPacketUseCase = new CreatePacketUseCaseImpl(
                 this.productExistsGateway,
                 this.createPacketGateway,
-                this.createPacketProductGateway,
-                this.getPacketGateway);
+                this.createPacketProductGateway);
 
         this.getPacketUseCase = new GetPacketUseCaseImpl(null, getPacketGateway);
     }
@@ -52,13 +51,21 @@ public class PacketControllerImpl implements PacketController {
     @Override
     public Collection<GetPacketResponse> getPackets() {
 
-        this.getPacketUseCase.getPackets();
 
-
-        return getPacketGateway.getPackets()
-                .stream()
+        return this.getPacketUseCase.getPackets().stream()
                 .map(p ->
-                        new GetPacketResponse(p.getId(), p.getDonor()))
+                        new GetPacketResponse(
+                                p.id(),
+                                p.volunteer(),
+                                p.donor(),
+                                p.type(),
+                                p.createdAt(),
+                                p.products()
+                                        .stream()
+                                        .map(x ->
+                                                new GetPacketProductResponse(x.productId(), x.name(), x.unity(), x.quantity()))
+                                        .collect(Collectors.toSet())
+                        ))
                 .collect(Collectors.toSet());
     }
 
@@ -66,13 +73,13 @@ public class PacketControllerImpl implements PacketController {
     public CreatePacketResponse createPacket(CreatePacketRequest request) throws PacketInvalidException {
 
         CreatePacketOuput packetCreated = this.createPacketUseCase.create(new CreatePacketInput(
-                request.donor(),
-                request.volunteer(),
-                request.type(),
-                request.products()
-                        .stream()
-                        .map(r -> new CreatePacketProductInput(r.id(),r.quantity()))
-                        .collect(Collectors.toSet())
+                        request.donor(),
+                        request.volunteer(),
+                        request.type(),
+                        request.products()
+                                .stream()
+                                .map(r -> new CreatePacketProductInput(r.id(), r.quantity()))
+                                .collect(Collectors.toSet())
                 )
         );
 
@@ -83,7 +90,7 @@ public class PacketControllerImpl implements PacketController {
                 packetCreated.volunteer(),
                 packetCreated.productList()
                         .stream()
-                        .map(p -> new CreatePacketProductsResponse(p.id(),p.quantity()))
+                        .map(p -> new CreatePacketProductsResponse(p.id(), p.quantity()))
                         .collect(Collectors.toSet()));
 
     }

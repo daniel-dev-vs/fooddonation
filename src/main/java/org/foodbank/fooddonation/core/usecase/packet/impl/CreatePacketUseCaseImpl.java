@@ -21,27 +21,18 @@ public class CreatePacketUseCaseImpl implements CreatePacketUseCase {
     private final ProductExistsGateway productGateway;
     private final CreatePacketGateway createPacketGateway;
     private final CreatePacketProductGateway createPacketProductGateway;
-    private final GetPacketGateway getPacketGateway;
 
     public CreatePacketUseCaseImpl(ProductExistsGateway productGateway,
                                    CreatePacketGateway createPacketGateway,
-                                   CreatePacketProductGateway createPacketProductGateway,
-                                   GetPacketGateway getPacketGateway) {
+                                   CreatePacketProductGateway createPacketProductGateway
+                                   ) {
 
         this.productGateway = productGateway;
         this.createPacketGateway = createPacketGateway;
         this.createPacketProductGateway = createPacketProductGateway;
-        this.getPacketGateway = getPacketGateway;
     }
 
 
-
-
-    public Collection<GetPacketOuput> getPackets(){
-        Collection<Packet> packets = getPacketGateway.getPackets();
-        return packets.stream().map(p -> new GetPacketOuput(p.getId(),p.getVolunteer(), p.getDonor(),p.getType(),p.getCreateAt()))
-                .collect(Collectors.toSet());
-    }
 
 
     @Override
@@ -62,12 +53,6 @@ public class CreatePacketUseCaseImpl implements CreatePacketUseCase {
 
 
     }
-
-    private Long getQuantity(Collection<PacketProduct> packetProductList, Long productId) {
-
-        return packetProductList.stream().filter(pp -> Objects.equals(pp.productId(), productId)).findFirst().get().quantity();
-    }
-
 
     private void validateProductExists(Collection<CreatePacketProductInput> productList) throws PacketInvalidException {
         for (var product : productList) {
