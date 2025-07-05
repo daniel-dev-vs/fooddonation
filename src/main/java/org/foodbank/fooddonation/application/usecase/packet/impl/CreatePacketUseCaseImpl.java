@@ -13,7 +13,6 @@ import org.foodbank.fooddonation.core.usecase.packet.dto.*;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class CreatePacketUseCaseImpl implements CreatePacketUseCase {
